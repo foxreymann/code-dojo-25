@@ -39,4 +39,12 @@ class SumsTest extends PHPUnit_Framework_TestCase
     public function testMCMXCgives1990() {
         $this->assertEquals(1990, convertRomanToDecimal('MCMXC'));
     }
+
+    public function testMMMMIVgives4004() {
+        $this->assertEquals(4004, convertRomanToDecimal('MMMMIV'));
+    }
+
+    public function testMMMMMMMMMCMXCIXgives9999() {
+        $this->assertEquals(9999, convertRomanToDecimal('MMMMMMMMMCMXCIX'));
+    }
 }
