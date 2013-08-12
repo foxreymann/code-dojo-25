@@ -16,4 +16,8 @@ class SumsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(3, converRomanToDecimal('III'));
     }
 
+    public function testIfVgives5() {
+        $this->assertEquals(5, converRomanToDecimal('V'));
+    }
+
 }
