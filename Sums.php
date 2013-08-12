@@ -1,6 +1,7 @@
 <?php
 
-function converRomanToDecimal($roman)
+
+function convertRomanToDecimal($roman)
 {
     $convertingMap = [];
     $convertingMap['I'] = 1;
@@ -11,28 +12,28 @@ function converRomanToDecimal($roman)
     $convertingMap['D'] = 500;
     $convertingMap['M'] = 1000;
 
-    $romanLength = strlen($roman);
-    
     $decimal = 0;
 
-    for($i = 0; $i < $romanLength; $i++) {
-        $currentDecimal = $convertingMap[$roman[$i]];
-
-        $nextDecimal = 0;
-        if($i < $romanLength - 1) {
-            $nextDecimal = $convertingMap[$roman[$i+1]];
-        }
-
-        $decimal += getValueOrRomanDigit($currentDecimal, $nextDecimal);
-    }
+    addFirstRomanDigit($roman, $decimal, $convertingMap);
 
     return $decimal;
 }
 
-function getValueOrRomanDigit($currentDecimal, $nextDecimal)
-{
-    if($nextDecimal > $currentDecimal) {
-        return - $currentDecimal;
+function addFirstRomanDigit($roman, &$decimal, $convertingMap) {
+
+    $currentDecimal = $convertingMap[$roman[0]];
+
+    if(isset($roman[1])) {
+        $nextDecimal = $convertingMap[$roman[1]];
+        if($nextDecimal > $currentDecimal) {
+            $decimal -= $currentDecimal;
+        } else {
+            $decimal += $currentDecimal;
+        }
+        $roman = substr($roman, 1);
+        addFirstRomanDigit($roman, $decimal, $convertingMap);       
+        return;
     }
-    return $currentDecimal;
+
+    $decimal += $currentDecimal;
 }
