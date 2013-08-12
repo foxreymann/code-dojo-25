@@ -1,6 +1,7 @@
 <?php
 
-function converRomanToDecimal($roman) {
+function converRomanToDecimal($roman)
+{
     $convertingMap = [];
     $convertingMap['I'] = 1;
     $convertingMap['V'] = 5;
@@ -16,16 +17,22 @@ function converRomanToDecimal($roman) {
 
     for($i = 0; $i < $romanLength; $i++) {
         $currentDecimal = $convertingMap[$roman[$i]];
+
         $nextDecimal = 0;
         if($i < $romanLength - 1) {
             $nextDecimal = $convertingMap[$roman[$i+1]];
         }
-        if($nextDecimal > $currentDecimal) {
-            $decimal -= $currentDecimal;
-        } else {
-            $decimal += $currentDecimal;
-        }
+
+        $decimal += getValueOrRomanDigit($currentDecimal, $nextDecimal);
     }
 
     return $decimal;
+}
+
+function getValueOrRomanDigit($currentDecimal, $nextDecimal)
+{
+    if($nextDecimal > $currentDecimal) {
+        return - $currentDecimal;
+    }
+    return $currentDecimal;
 }
