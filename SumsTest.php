@@ -20,4 +20,8 @@ class SumsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(5, converRomanToDecimal('V'));
     }
 
+    public function testIfIVgives4() {
+        $this->assertEquals(4, converRomanToDecimal('IV'));
+    }
+
 }
