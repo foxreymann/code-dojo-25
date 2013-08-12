@@ -1,5 +1,7 @@
 <?php
 
-function solution($A, $B) {
-    return true;
+function converRomanToDecimal($roman) {
+    $romanLength = strlen($roman);
+
+    return $romanLength;
 }
