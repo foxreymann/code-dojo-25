@@ -24,4 +24,19 @@ class SumsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(4, converRomanToDecimal('IV'));
     }
 
+    public function testIfIVgives6() {
+        $this->assertEquals(6, converRomanToDecimal('VI'));
+    }
+
+    public function testIfXIXgives19() {
+        $this->assertEquals(19, converRomanToDecimal('XIX'));
+    }
+
+    public function testMCMLIVgives1954() {
+        $this->assertEquals(1954, converRomanToDecimal('MCMLIV'));
+    }
+
+    public function testMCMXCgives1990() {
+        $this->assertEquals(1990, converRomanToDecimal('MCMXC'));
+    }
 }
