@@ -14,7 +14,7 @@ function converRomanToDecimal($roman) {
         $currentDecimal = $convertingMap[$roman[$i]];
         $nextDecimal = 0;
         if($i < $romanLength - 1) {
-            $nextDecimal = $convertingMap[$roman[$i]];
+            $nextDecimal = $convertingMap[$roman[$i+1]];
         }
         if($nextDecimal > $currentDecimal) {
             $decimal -= $currentDecimal;
